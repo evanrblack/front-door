@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   
   root 'pages#home'
 
+  resources :admins
+  resources :agents
+  resources :clients
+  resources :listings
+  
   # get 'sign-up', 'clients#new'
   # post 'sign-up'
 end

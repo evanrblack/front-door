@@ -1,0 +1,29 @@
+#content.container
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-primary
+        .panel-heading
+          %h1.panel-title= @listing.address
+        .panel-body{ style: 'padding: 0' }
+          = image_tag @image_url, style: 'width: 100%'
+        .panel-footer
+          = link_to '< Prev', '#'
+          .pull-right
+            = link_to 'Next >', '#'
+  .row
+    .col-md-5.col-md-offset-1
+      .text-center
+        %h4 Location:
+        %h3
+          %strong= @listing.street_address
+          %br
+          %span #{@listing.city}, #{@listing.state} #{@listing.zip_code}
+    .col-sm-5
+      .text-center
+        %h4 Asking price:
+        %h3
+          %strong= number_to_currency(@listing.asking_price, precision: 0)
+  .row
+    .col-md-6
+      .card
+        %h3 #{} square feet
