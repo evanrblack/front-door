@@ -12,7 +12,6 @@
         Front Door
     #navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to 'Home', root_path
         - if user_signed_in?
           %li= link_to 'Log out', destroy_user_session_path, method: :delete
         - else
