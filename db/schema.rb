@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216222536) do
+ActiveRecord::Schema.define(version: 20170217060223) do
+
+  create_table "listings", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "agent_id"
+    t.string   "street_address",       null: false
+    t.string   "extra_address"
+    t.string   "city",                 null: false
+    t.string   "state",                null: false
+    t.string   "zip_code",             null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "bedrooms",             null: false
+    t.integer  "full_bathrooms",       null: false
+    t.integer  "half_bathrooms",       null: false
+    t.integer  "square_feet",          null: false
+    t.integer  "year_built",           null: false
+    t.integer  "asking_price",         null: false
+    t.integer  "sales_price"
+    t.text     "directions"
+    t.text     "showing_instructions"
+    t.string   "mls_number"
+    t.string   "mls_association"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["agent_id"], name: "index_listings_on_agent_id"
+    t.index ["client_id"], name: "index_listings_on_client_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
