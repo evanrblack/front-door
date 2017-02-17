@@ -1,5 +1,5 @@
+# This class represents a home being sold.
 class Listing < ApplicationRecord
-
   STATES = {
     'Alabama' => 'AL',
     'Alaska' => 'AK',
@@ -53,11 +53,11 @@ class Listing < ApplicationRecord
     'Wisconsin' => 'WI',
     'Wyoming' => 'WY'
   }.invert
-  
+
   belongs_to :client
   belongs_to :agent
-  
-  validates :street_address, :city, presence: true
+
+  validates :client, :street_address, :city, presence: true
   validates :state, inclusion: { in: STATES.keys }
   validates :zip_code, format: { with: /\A[0-9]{5}\z/ }
 
@@ -66,7 +66,8 @@ class Listing < ApplicationRecord
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   geocoded_by :address do |obj, results|
-    next unless geo = results.first
+    geo = results.first
+    next unless geo
     obj.city = geo.city unless geo.city.blank?
     obj.latitude = geo.latitude || 0.0
     obj.longitude = geo.longitude || 0.0

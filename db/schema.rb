@@ -15,19 +15,19 @@ ActiveRecord::Schema.define(version: 20170217060223) do
   create_table "listings", force: :cascade do |t|
     t.integer  "client_id"
     t.integer  "agent_id"
-    t.string   "street_address",       null: false
+    t.string   "street_address"
     t.string   "extra_address"
     t.string   "city",                 null: false
     t.string   "state",                null: false
     t.string   "zip_code",             null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "bedrooms",             null: false
-    t.integer  "full_bathrooms",       null: false
-    t.integer  "half_bathrooms",       null: false
-    t.integer  "square_feet",          null: false
-    t.integer  "year_built",           null: false
-    t.integer  "asking_price",         null: false
+    t.integer  "bedrooms"
+    t.integer  "full_bathrooms"
+    t.integer  "half_bathrooms"
+    t.integer  "square_feet"
+    t.integer  "year_built"
+    t.integer  "asking_price"
     t.integer  "sales_price"
     t.text     "directions"
     t.text     "showing_instructions"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20170217060223) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index [nil], name: "index_users_on_confirmation_token", unique: true
   end
 
 end

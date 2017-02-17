@@ -4,7 +4,7 @@ class CreateListings < ActiveRecord::Migration[5.0]
       t.belongs_to :client
       t.belongs_to :agent
       
-      t.string :street_address, null: false
+      t.string :street_address
       t.string :extra_address
       t.string :city, null: false
       t.string :state, null: false
@@ -13,12 +13,12 @@ class CreateListings < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
       
-      t.integer :bedrooms, null: false
-      t.integer :full_bathrooms, null: false
-      t.integer :half_bathrooms, null: false
-      t.integer :square_feet, null: false
-      t.integer :year_built, null: false
-      t.integer :asking_price, null: false
+      t.integer :bedrooms
+      t.integer :full_bathrooms
+      t.integer :half_bathrooms
+      t.integer :square_feet
+      t.integer :year_built
+      t.integer :asking_price
       t.integer :sales_price
 
       t.text :directions
