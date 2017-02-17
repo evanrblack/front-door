@@ -1,0 +1,73 @@
+p {
+  font-size: 16px;
+}
+
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+
+  .navbar-brand {
+    color: $brand-primary;
+  }
+}
+
+#content.container {
+  padding-top: 40px;
+}
+
+// For public pages
+#header {
+  background: url(image-path('header-bg.jpg')) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    color: white;
+    text-shadow: 2px 2px 8px black;
+    margin-bottom: 24px;
+  }
+  
+  .btn {
+    font-size: 24px;
+  }
+}
+
+section {
+  padding: 80px 0;
+}
+
+section.testimonial {
+  background: url(image-path('testimonial-bg.jpg')) no-repeat center center;
+  background-size: cover;
+
+  .box {
+    padding: 20px 20px 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+
+    p {
+      font-size: 20px;
+
+      &.person {
+	color: $brand-primary;
+	font-weight: bold;
+      }
+    }
+  }
+}
+
+// For flashes
+.alert {
+  font-weight: bold;
+  margin: 0;
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
