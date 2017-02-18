@@ -68,6 +68,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 # For great icons
 gem 'font-awesome-rails'
+# For better forms
+gem 'simple_form'
 
 # MISC
 # For coming up with random stuff

@@ -10,8 +10,9 @@ nav.navbar.navbar-default {
   }
 }
 
-#content.container {
-  padding-top: 40px;
+#content {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .card {
@@ -36,6 +37,32 @@ nav.navbar.navbar-default {
   
   .btn {
     font-size: 24px;
+  }
+
+  &.listing {
+    height: 70vh;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    .details {
+      color: white;
+      text-align: right;
+      font-size: 24px;
+      line-height: 24px;
+
+      padding: 8px;
+      text-shadow: 0 2px 4px black;
+      background: rgba(0, 0, 0, 0.8);
+
+      &:first-child {
+	border-bottom-left-radius: 4px;
+      }
+
+      &:last-child {
+	border-top-left-radius: 4px;
+      }
+    }
   }
 }
 
@@ -75,4 +102,9 @@ section.testimonial {
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+// For badges
+.badge-primary {
+  background-color: $brand-primary;
 }

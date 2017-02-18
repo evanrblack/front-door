@@ -1,0 +1,36 @@
+#content.container
+  %h1.text-center Create Listing
+  = simple_form_for @listing do |f|
+    = f.error :base
+    .row
+      .col-md-4
+        .panel.panel-primary
+          .panel-heading
+            %h2.panel-title 1. Location
+          .panel-body
+            = f.input :street_address
+            = f.input :city
+            = f.input :state, collection: Listing::STATES.invert
+            = f.input :zip_code
+      .col-md-4
+        .panel.panel-primary
+          .panel-heading
+            %h2.panel-title 2. Details
+          .panel-body
+            - types = Listing.property_types.map { |n, _| [n.titleize, n] }
+            = f.input :property_type, collection: types
+            = f.input :bedrooms
+            = f.input :full_bathrooms
+            = f.input :half_bathrooms
+            = f.input :square_feet
+            = f.input :year_built
+      .col-md-4
+        .panel.panel-primary
+          .panel-heading
+            %h2.panel-title 3. Sale info
+          .panel-body
+            -#= f.input :asking_price
+            = f.input :description
+            = f.input :showing_instructions
+    .text-center
+      = f.button :submit, class: 'btn-primary btn-lg'

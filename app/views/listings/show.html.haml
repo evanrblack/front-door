@@ -1,29 +1,37 @@
+#header.listing{ style: "background-image: url(#{@street_view_url})" }
+  .details
+    %strong= @listing.street_address
+    %br
+    %small #{@listing.city}, #{@listing.state} #{@listing.zip_code}
+  .details
+    %strong= number_to_currency(@listing.asking_price, precision: 0)
 #content.container
   .row
-    .col-md-6.col-md-offset-3
+    .col-md-4
       .panel.panel-primary
         .panel-heading
-          %h1.panel-title= @listing.address
-        .panel-body{ style: 'padding: 0' }
-          = image_tag @image_url, style: 'width: 100%'
-        .panel-footer
-          = link_to '< Prev', '#'
-          .pull-right
-            = link_to 'Next >', '#'
-  .row
-    .col-md-5.col-md-offset-1
-      .text-center
-        %h4 Location:
-        %h3
-          %strong= @listing.street_address
-          %br
-          %span #{@listing.city}, #{@listing.state} #{@listing.zip_code}
-    .col-sm-5
-      .text-center
-        %h4 Asking price:
-        %h3
-          %strong= number_to_currency(@listing.asking_price, precision: 0)
-  .row
-    .col-md-6
-      .card
-        %h3 #{} square feet
+          %span.panel-title Details
+        .panel-body
+          %ul.list-group
+            - %w[bedrooms full_bathrooms half_bathrooms square_feet year_built].each do |p|
+              %li.list-group-item
+                = p.humanize
+                %span.badge.badge-primary= @listing.send(p)
+    .col-md-4
+      .panel.panel-primary
+        .panel-heading
+          %span.panel-title Sales info
+        .panel-body
+          %strong Directions
+          .well
+            = @listing.directions || 'None'
+          %strong Showing instructions
+          .well
+            = @listing.showing_instructions || 'None'
+    .col-md-4
+      .panel.panel-primary
+        .panel-heading
+          %span.panel-title Location
+        .panel-body
+          .text-center
+            = image_tag @map_view_url, class: 'img-responsive'

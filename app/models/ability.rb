@@ -5,14 +5,14 @@ class Ability
     return unless user
 
     # Can manage their own account
-    can %i[create read update], user.class, id: user.id
+    can %i[create read update], user
     
-    case user.class
-    when Admin
+    case user.type
+    when 'Admin'
       can :manage, :all
-    when Agent
+    when 'Agent'
       can %i[create read update], Listing, agent_id: user.id
-    when Client
+    when 'Client'
       can %i[create read update], Listing, client_id: user.id
     end
   end
