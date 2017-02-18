@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170217060223) do
     t.integer  "square_feet"
     t.integer  "year_built"
     t.integer  "asking_price"
-    t.text     "directions"
+    t.text     "description"
     t.text     "showing_instructions"
     t.string   "mls_number"
     t.string   "mls_association"

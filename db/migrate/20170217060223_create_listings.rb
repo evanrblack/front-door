@@ -19,9 +19,9 @@ class CreateListings < ActiveRecord::Migration[5.0]
       t.integer :half_bathrooms
       t.integer :square_feet
       t.integer :year_built
-      t.integer :asking_price
 
-      t.text :directions
+      t.integer :asking_price
+      t.text :description
       t.text :showing_instructions
 
       t.string :mls_number
