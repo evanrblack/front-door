@@ -26,6 +26,21 @@ class ListingsController < ApplicationController
     end
   end
 
+  def edit
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      flash.notice = 'Successfully updated listing.'
+      redirect_to @listing
+    else
+      flash.alert = 'There were some errors in your submission.'
+      render :edit
+    end
+  end
+
   private
 
   def listing_params

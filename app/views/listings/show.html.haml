@@ -1,3 +1,4 @@
+- page_title @listing.address
 #header.listing{ style: "background-image: url(#{@street_view_url})" }
   .details
     %strong= @listing.street_address
@@ -22,9 +23,9 @@
         .panel-heading
           %span.panel-title Sales info
         .panel-body
-          %strong Directions
+          %strong Description
           .well
-            = @listing.directions || 'None'
+            = @listing.description || 'None'
           %strong Showing instructions
           .well
             = @listing.showing_instructions || 'None'
