@@ -1,10 +1,10 @@
 - page_title @listing.address
 #header.listing{ style: "background-image: url(#{@street_view_url})" }
-  .details
+  .details.address
     %strong= @listing.street_address
     %br
     %small #{@listing.city}, #{@listing.state} #{@listing.zip_code}
-  .details
+  .details.asking-price
     %strong= number_to_currency(@listing.asking_price, precision: 0)
 #content.container
   .row
