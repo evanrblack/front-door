@@ -1,3 +1,4 @@
 #flashes
   - flash.each do |type, message|
-    .alert{ class: "alert-#{type}" }= message
+    .alert{ class: "alert-#{type}" }
+      .container= message
