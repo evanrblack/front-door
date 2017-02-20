@@ -21,14 +21,17 @@
     .col-md-4
       .panel.panel-primary
         .panel-heading
-          %span.panel-title Sales info
+          %span.panel-title Description
         .panel-body
-          %strong Description
-          .well
-            = @listing.description || 'None'
-          %strong Showing instructions
-          .well
-            = @listing.showing_instructions || 'None'
+          = @listing.description.present? ? @listing.description : 'None given'
+    .col-md-4
+      .panel.panel-primary
+        .panel-heading
+          %span.panel-title Features
+        .panel-body
+          %ul
+            %li= 'None'
+  .row
     .col-md-4
       .panel.panel-primary
         .panel-heading

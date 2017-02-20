@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
-    @listing.user = current_user
+    @listing.client = current_user
     if @listing.save
       flash.notice = 'Successfully created listing.'
       redirect_to @listing
