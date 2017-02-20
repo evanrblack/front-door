@@ -60,6 +60,8 @@ gem 'phony_rails'
 gem 'carrierwave'
 # For handling roles and capabilities
 gem 'cancancan'
+# For handling image processing
+gem 'mini_magick'
 
 # FRONTEND
 # For marking up pages
