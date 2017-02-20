@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   def agent_dashboard
     render 'agent_dashboard'
   end
-  
+
   def client_dashboard
     @listings = @user.listings
     render 'client_dashboard'

@@ -1,7 +1,7 @@
 # This class handles all actions for listings.
 class ListingsController < ApplicationController
   load_and_authorize_resource
-  
+
   def show
     @listing = Listing.find(params[:id])
     location = URI.escape(@listing.address)

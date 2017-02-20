@@ -57,15 +57,15 @@ class Listing < ApplicationRecord
   belongs_to :client
   belongs_to :agent
 
-  enum property_type: %i[residential condo commercial other]
-  
+  enum property_type: %i(residential condo commercial other)
+
   validates :client, :street_address, :city, :state, :zip_code, :property_type,
             :bedrooms, :full_bathrooms, :half_bathrooms, :square_feet,
             :year_built, :asking_price, presence: true
   validates :state, inclusion: { in: STATES.keys }
   validates :zip_code, format: { with: /\A[0-9]{5}\z/ }
   validates :property_type, inclusion: { in: property_types.keys }
-  
+
   validates :bedrooms, :full_bathrooms, :half_bathrooms, :square_feet,
             :year_built, :asking_price,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
