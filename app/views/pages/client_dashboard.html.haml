@@ -1,3 +1,24 @@
 - content_for :title, 'Dashboard'
 #content.container
   %h1.text-center Welcome #{@user.first_name}
+
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-primary
+        .panel-heading
+          %h2.panel-title Your Listings
+        .panel-body
+          %table.table
+            %thead
+              %tr
+                %th Address
+                %th Agent
+                %th Status
+            %tbody
+              - @listings.each do |listing|
+                %tr
+                  %td= link_to listing.street_address, listing
+                  %td Nobody
+                  %td 1. blah
+        .panel-footer
+          = link_to 'Create New Listing', new_listing_path
