@@ -72,6 +72,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 # For better forms
 gem 'simple_form'
+# For simpler emails
+gem 'maildown'
 
 # MISC
 # For coming up with random stuff
