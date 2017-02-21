@@ -21,7 +21,7 @@ class ListingsController < ApplicationController
       flash.notice = 'Successfully created listing.'
       redirect_to @listing
     else
-      flash.alert = 'There were some errors in your submission.'
+      flash.now.alert = 'There were some errors in your submission.'
       render :new
     end
   end
@@ -36,11 +36,21 @@ class ListingsController < ApplicationController
       flash.notice = 'Successfully updated listing.'
       redirect_to @listing
     else
-      flash.alert = 'There were some errors in your submission.'
+      flash.now.alert = 'There were some errors in your submission.'
       render :edit
     end
   end
 
+  def claim
+    @listing = Listing.find(params[:listing_id])
+    if @listing.update(agent: current_user)
+      flash.notice = 'Successfully claimed listing.'
+    else
+      flash.alert = 'Unable to claim listing.'
+    end
+    redirect_to @listing
+  end
+  
   private
 
   def listing_params

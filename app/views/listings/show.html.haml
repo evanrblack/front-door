@@ -1,4 +1,10 @@
 - page_title @listing.address
+
+- if can? :claim, @listing
+  .alert.alert-warning
+    .container
+      = link_to 'Claim this listing', listing_claim_path(@listing), class: 'btn btn-primary', method: :post
+
 #header.listing{ style: "background-image: url(#{@street_view_url})" }
   .details.address
     %strong= @listing.street_address

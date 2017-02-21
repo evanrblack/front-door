@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
   end
   
   rescue_from CanCan::AccessDenied do |_exception|
-    if user_signed_in?
+    if login_signed_in?
       redirect_to root_path,
                   alert: 'You are not authorized to access the requested page.'
     else
-      redirect_to new_user_session_path,
+      redirect_to new_login_session_path,
                   alert: 'You must log in to access the requested page.'
     end
   end

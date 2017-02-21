@@ -18,7 +18,10 @@
               - @listings.each do |listing|
                 %tr
                   %td= link_to listing.street_address, listing
-                  %td Nobody
+                  - if listing.agent
+                    %td= link_to listing.agent.name, listing.agent
+                  - else
+                    %td None
                   %td 1. blah
         .panel-footer
           = link_to 'Create New Listing', new_listing_path

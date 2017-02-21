@@ -1,3 +1,45 @@
 - content_for :title, 'Dashboard'
 #content.container
-  %h1 Agent Dashboard
+  %h1.text-center Welcome #{@user.first_name}
+
+  .row
+    .col-md-6
+      .panel.panel-primary
+        .panel-heading
+          %h2.panel-title Your Listings
+        .panel-body
+          - if @listings.empty?
+            %p You have no current listings.
+          - else
+            %table.table
+              %thead
+                %tr
+                  %th Address
+                  %th Client
+                  %th Status
+              %tbody
+                - @listings.each do |listing|
+                  %tr
+                    %td= link_to listing.street_address, listing
+                    %td= listing.client.name
+                    %td 1. blah
+    .col-md-6
+      .panel.panel-primary
+        .panel-heading
+          %h2.panel-title Unclaimed Listings
+        .panel-body
+          - if @unclaimed_listings.empty?
+            %p There are no unclaimed listings in your area.
+          - else
+            %table.table
+              %thead
+                %tr
+                  %th Address
+                  %th Client
+                  %th Status
+              %tbody
+                - @unclaimed_listings.each do |listing|
+                  %tr
+                    %td= link_to listing.address, listing
+                    %td= listing.client.name
+                    %td 1. blah

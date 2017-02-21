@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    send("#{current_user.model_name.singular}_dashboard")
+    send("#{@user.model_name.singular}_dashboard")
   end
 
   private
@@ -14,6 +14,8 @@ class PagesController < ApplicationController
   end
 
   def agent_dashboard
+    @listings = @user.listings
+    @unclaimed_listings = Listing.where(agent_id: nil).near(@user, 60)
     render 'agent_dashboard'
   end
 

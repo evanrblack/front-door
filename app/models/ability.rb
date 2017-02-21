@@ -19,6 +19,9 @@ class Ability
   end
 
   def agent_abilities(agent)
+    can :claim, Listing do |listing|
+      listing.agent_id.nil? && agent.distance_to(listing) <= 60
+    end
     can %i(create read update), Listing, agent_id: agent.id
   end
 

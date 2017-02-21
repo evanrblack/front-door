@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :admins
   resources :agents
   resources :clients
-  resources :listings
+  resources :listings do
+    post :claim, to: 'listings#claim'
+  end
   
   # get 'sign-up', 'clients#new'
   # post 'sign-up'
