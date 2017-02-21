@@ -74,6 +74,8 @@ gem 'font-awesome-rails'
 gem 'simple_form'
 # For simpler emails
 gem 'maildown'
+# To preview emails
+gem 'letter_opener', group: :development
 
 # MISC
 # For coming up with random stuff

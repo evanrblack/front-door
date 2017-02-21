@@ -52,6 +52,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Set up default url options for mailers
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } 
+  # Set up default url options for mailers.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Open mail in browser tabs using letter_opener.
+  config.action_mailer.delivery_method = :letter_opener
 end

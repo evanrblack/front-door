@@ -1,7 +1,7 @@
 # This is a generic helper available for use in all views.
 module ApplicationHelper
   def current_user
-    current_login.loginable
+    current_login.loginable if current_login
   end
 
   def full_title
