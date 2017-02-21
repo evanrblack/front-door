@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
     end
     redirect_to @listing
   end
-  
+
   private
 
   def listing_params

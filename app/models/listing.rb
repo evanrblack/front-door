@@ -1,7 +1,7 @@
 # This class represents a home being sold.
 class Listing < ApplicationRecord
   include Locatable
-  
+
   belongs_to :client
   belongs_to :agent
 

@@ -6,7 +6,7 @@ module Phonable
 
   included do
     class_attribute :phone_number_optional
-    
+
     phony_normalize :phone_number, default_country_code: 'US'
     validates :phone_number, presence: true, unless: :phone_number_optional
     validates :phone_number, phony_plausible: true

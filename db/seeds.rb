@@ -8,10 +8,8 @@ admin = Admin.create(login: Login.new(email: 'admin@example.com',
                      first_name: Faker::Name.first_name,
                      last_name: Faker::Name.last_name,
                      phone_number: '479-555-0001')
-binding.pry
-
 agent = Agent.create(login: Login.new(email: 'agent@example.com',
-                                      password: 'wordpass'), 
+                                      password: 'wordpass'),
                      first_name: Faker::Name.first_name,
                      last_name: Faker::Name.last_name,
                      phone_number: '479-555-0002',

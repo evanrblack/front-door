@@ -3,7 +3,7 @@ module ApplicationHelper
   def current_user
     current_login.loginable
   end
-  
+
   def full_title
     [content_for(:title), 'Front Door'].compact.join(' | ')
   end

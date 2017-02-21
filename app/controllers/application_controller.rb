@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def current_user
     current_login.loginable
   end
-  
+
   rescue_from CanCan::AccessDenied do |_exception|
     if login_signed_in?
       redirect_to root_path,
