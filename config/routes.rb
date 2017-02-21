@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '',
-                     path_names: { sign_in: 'log-in', sign_out: 'log-out' }
+  devise_for :logins, path: '',
+                      path_names: { sign_in: 'log-in', sign_out: 'log-out' }
 
-  authenticated :user do
+  authenticated :login do
     root 'pages#dashboard', as: :authenticated_root
   end
   

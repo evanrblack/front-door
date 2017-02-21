@@ -12,37 +12,67 @@
 
 ActiveRecord::Schema.define(version: 20170217060223) do
 
+  create_table "admins", force: :cascade do |t|
+    t.string   "first_name",   null: false
+    t.string   "last_name",    null: false
+    t.string   "phone_number", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "agents", force: :cascade do |t|
+    t.string   "first_name",                   null: false
+    t.string   "last_name",                    null: false
+    t.string   "phone_number",                 null: false
+    t.string   "street_address"
+    t.string   "extra_address"
+    t.string   "city",                         null: false
+    t.string   "state",                        null: false
+    t.string   "zip_code",                     null: false
+    t.float    "latitude",       default: 0.0, null: false
+    t.float    "longitude",      default: 0.0, null: false
+    t.string   "license_number",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "first_name",   null: false
+    t.string   "last_name",    null: false
+    t.string   "phone_number", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "listings", force: :cascade do |t|
     t.integer  "client_id"
     t.integer  "agent_id"
-    t.string   "street_address"
+    t.string   "street_address",                     null: false
     t.string   "extra_address"
-    t.string   "city",                 null: false
-    t.string   "state",                null: false
-    t.string   "zip_code",             null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.integer  "property_type"
-    t.integer  "bedrooms"
-    t.integer  "full_bathrooms"
-    t.integer  "half_bathrooms"
-    t.integer  "square_feet"
-    t.integer  "year_built"
-    t.integer  "asking_price"
+    t.string   "city",                               null: false
+    t.string   "state",                              null: false
+    t.string   "zip_code",                           null: false
+    t.float    "latitude",             default: 0.0, null: false
+    t.float    "longitude",            default: 0.0, null: false
+    t.integer  "property_type",                      null: false
+    t.integer  "bedrooms",             default: 0,   null: false
+    t.integer  "full_bathrooms",       default: 0,   null: false
+    t.integer  "half_bathrooms",       default: 0,   null: false
+    t.integer  "square_feet",                        null: false
+    t.integer  "year_built",                         null: false
+    t.integer  "asking_price",                       null: false
     t.text     "description"
     t.text     "showing_instructions"
     t.string   "mls_number"
     t.string   "mls_association"
     t.datetime "listed_at"
-    t.integer  "sales_price"
-    t.datetime "sold_at"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["agent_id"], name: "index_listings_on_agent_id"
     t.index ["client_id"], name: "index_listings_on_client_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "logins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -53,14 +83,13 @@ ActiveRecord::Schema.define(version: 20170217060223) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "type",                                null: false
-    t.string   "first_name",                          null: false
-    t.string   "last_name",                           null: false
-    t.string   "phone_number",                        null: false
+    t.string   "loginable_type"
+    t.integer  "loginable_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_logins_on_email", unique: true
+    t.index ["loginable_type", "loginable_id"], name: "index_logins_on_loginable_type_and_loginable_id"
+    t.index ["reset_password_token"], name: "index_logins_on_reset_password_token", unique: true
   end
 
 end

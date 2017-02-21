@@ -2,6 +2,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def current_user
+    current_login.loginable
+  end
+  
   rescue_from CanCan::AccessDenied do |_exception|
     if user_signed_in?
       redirect_to root_path,
