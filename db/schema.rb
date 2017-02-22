@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170217060223) do
     t.text     "showing_instructions"
     t.string   "mls_number"
     t.string   "mls_association"
-    t.datetime "listed_at"
+    t.datetime "mls_at"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.index ["agent_id"], name: "index_listings_on_agent_id"

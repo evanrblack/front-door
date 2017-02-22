@@ -1,0 +1,8 @@
+This email is confirmation that you have added <%= @client.name %>'s property ([<%= @listing.street_address %>](<%= listing_url(@listing) %>)) to your MLS.
+
+This is the info you gave:
+
+- MLS Association: <%= @listing.mls_association %>
+- MLS Number: <%= @listing.mls_number %>
+
+<%= @client.name %> has received a notification of this.

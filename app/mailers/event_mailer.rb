@@ -1,11 +1,11 @@
 class EventMailer < ApplicationMailer
-  def listing_new_client(listing)
+  def listing_created_client(listing)
     @listing = listing
     @client = @listing.client
     mail(to: @client.email, subject: "Thank you for listing with Front Door")
   end
 
-  def listing_new_agent(listing, agent)
+  def listing_created_agent(listing, agent)
     @listing = listing
     @client = @listing.client
     @agent = agent
@@ -17,7 +17,7 @@ class EventMailer < ApplicationMailer
     @agent = @listing.agent
     @client = @listing.client
     mail(to: @client.email,
-         subject: "#{@agent.name} has agreed to be your agent")
+         subject: "#{@agent.name} agreed to be your agent")
   end
 
   def listing_claimed_agent(listing)
@@ -25,8 +25,22 @@ class EventMailer < ApplicationMailer
     @agent = @listing.agent
     @client = @listing.client
     mail(to: @agent.email,
-         subject: "You have agreed to represent #{@client.name}")
+         subject: "You agreed to represent #{@client.name}")
   end
 
-  def 
+  def listing_listed_client(listing)
+    @listing = listing
+    @agent = @listing.agent
+    @client = @listing.client
+    mail(to: @client.email,
+         subject: "#{@agent.name} added your property to their MLS")
+  end
+
+  def listing_listed_agent(listing)
+    @listing = listing
+    @agent = @listing.agent
+    @client = @listing.client
+    mail(to: @agent.email,
+         subject: "You added #{@client.name}'s property to your MLS")
+  end
 end

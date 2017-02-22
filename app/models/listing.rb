@@ -24,9 +24,14 @@ class Listing < ApplicationRecord
   # Emails
   after_create :send_email_created
   after_update :send_email_claimed, if: -> { agent_id && agent_id_changed? }
-  after_update :send_email_listed, if: :mls_at
+  after_update :send_email_listed, if: -> { mls_at && mls_at_changed? }
 
   def status
+    case self
+    when -> (l) { l.mls_at } then :listed
+    when -> (l) { l.agent_id } then :claimed
+    else :created
+    end
   end
 
   private

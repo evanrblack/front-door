@@ -29,5 +29,8 @@
           = f.input :asking_price
           = f.input :description
           = f.input :showing_instructions
+          - if can? :list, @listing
+            = f.input :mls_association, label: 'MLS association'
+            = f.input :mls_number, label: 'MLS number'
   .text-center
     = f.button :submit, class: 'btn-primary btn-lg'
