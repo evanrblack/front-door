@@ -15,25 +15,45 @@ class Listing < ApplicationRecord
             :year_built, :asking_price,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  # Emails
-  after_create :send_email_new
-  after_update :send_email_claimed, if: -> { agent_id && agent_id_changed? }
+  # If one or other is found, both are required
+  validates :mls_number, :mls_association,
+            presence: true, if: -> { mls_number || mls_association }
 
+  before_update :set_mls_at, if: -> { mls_number && mls_association }
+
+  # Emails
+  after_create :send_email_created
+  after_update :send_email_claimed, if: -> { agent_id && agent_id_changed? }
+  after_update :send_email_listed, if: :mls_at
+
+  def status
+  end
 
   private
 
-  def send_email_new
+  def set_mls_at
+    self.mls_at = Time.zone.now
+  end
+
+  def send_email_created
     # Send welcome to client
-    ListingMailer.new_listing_client(self).deliver_now
+    EventMailer.listing_created_client(self).deliver_now
     # Send info to agents
     agents = Agent.near(self, 60)
-    agents.each { |a| ListingMailer.new_listing_agent(self, a).deliver_now }
+    agents.each { |a| EventMailer.listing_created_agent(self, a).deliver_now }
   end
 
   def send_email_claimed
     # Send notice to client
-    ListingMailer.claimed_listing_client(self).deliver_now
+    EventMailer.listing_claimed_client(self).deliver_now
     # Send confirmation to agent
-    ListingMailer.claimed_listing_agent(self).deliver_now
+    EventMailer.listing_claimed_agent(self).deliver_now
+  end
+
+  def send_email_listed
+    # Send notice to client
+    EventMailer.listing_listed_client(self).deliver_now
+    # Send confirmation to agent
+    EventMailer.listing_listed_agent(self).deliver_now
   end
 end

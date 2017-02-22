@@ -26,7 +26,7 @@ class CreateListings < ActiveRecord::Migration[5.0]
 
       t.string :mls_number
       t.string :mls_association
-      t.datetime :listed_at
+      t.datetime :mls_at
 
       t.timestamps
     end
