@@ -1,0 +1,33 @@
+.row
+  .col-md-4
+    .panel.panel-primary
+      .panel-heading
+        %h2.panel-title Location
+      .panel-body
+        = form.input :street_address
+        = form.input :city
+        = form.input :state, collection: Listing::STATES.invert
+        = form.input :zip_code
+  .col-md-4
+    .panel.panel-primary
+      .panel-heading
+        %h2.panel-title Details
+      .panel-body
+        - types = Listing.property_types.map { |n, _| [n.titleize, n] }
+        = form.input :property_type, collection: types
+        = form.input :bedrooms
+        = form.input :full_bathrooms
+        = form.input :half_bathrooms
+        = form.input :square_feet
+        = form.input :year_built
+  .col-md-4
+    .panel.panel-primary
+      .panel-heading
+        %h2.panel-title Additional info
+      .panel-body
+        = form.input :asking_price
+        = form.input :description
+        = form.input :showing_instructions
+        - if can? :list, @listing
+          = form.input :mls_association, label: 'MLS association'
+          = form.input :mls_number, label: 'MLS number'

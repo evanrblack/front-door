@@ -2,8 +2,8 @@
 class Listing < ApplicationRecord
   include Locatable
 
-  belongs_to :client
-  belongs_to :agent
+  belongs_to :client, inverse_of: :listings
+  belongs_to :agent, inverse_of: :listings
 
   has_many :offers, dependent: :destroy
 

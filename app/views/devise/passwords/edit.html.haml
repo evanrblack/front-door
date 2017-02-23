@@ -1,10 +1,11 @@
-- content_for :title, 'New password'
+- content_for :title, 'New Password'
 #content.container
+  %h1.text-center New Password
   .row
     .col-md-4.col-md-offset-4
       .panel.panel-primary
         .panel-heading
-          %h1.panel-title New password
+          %span.panel-title New Password
         .panel-body
           = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
             = f.input :reset_password_token, as: :hidden

@@ -17,7 +17,7 @@ class OffersController < ApplicationController
       flash.notice = 'Successfully added offer.'
       redirect_to listing_offers_path(@listing)
     else
-      flash.alert = 'There were some errors with your submission.'
+      flash.now.alert = 'There were some errors with your submission.'
       render :new
     end
   end
@@ -29,7 +29,7 @@ class OffersController < ApplicationController
       flash.notice = 'Successfully updated offer.'
       redirect_to listing_offers_path(@listing)
     else
-      flash.alert = 'There were some errors with your submission.'
+      flash.now.alert = 'There were some errors with your submission.'
       render :edit
     end
   end

@@ -1,3 +1,5 @@
 #content.container
   %h1.text-center Create Listing
-  = render partial: 'form', locals: { listing: @listing }
+  = simple_form_for @listing do |f|
+    = render partial: 'fields', locals: { form: f }
+    .text-center= f.button :submit, class: 'btn btn-primary btn-lg'

@@ -16,6 +16,5 @@ Rails.application.routes.draw do
     resources :offers, shallow: true
   end
   
-  # get 'sign-up', 'clients#new'
-  # post 'sign-up'
+  get 'sign-up', to: 'clients#new'
 end
