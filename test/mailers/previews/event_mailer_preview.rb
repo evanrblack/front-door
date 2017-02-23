@@ -3,15 +3,15 @@ class EventMailerPreview < ActionMailer::Preview
   def listing_created_agent
     EventMailer.listing_created_agent(Listing.first, Agent.first)
   end
-  
+
   def listing_created_client
     EventMailer.listing_created_client(Listing.first)
   end
-  
+
   def listing_claimed_agent
     EventMailer.listing_claimed_agent(Listing.first)
   end
-  
+
   def listing_claimed_client
     EventMailer.listing_claimed_client(Listing.first)
   end
@@ -35,7 +35,7 @@ class EventMailerPreview < ActionMailer::Preview
   def offer_sold_agent
     EventMailer.offer_sold_agent(Offer.first)
   end
-  
+
   def offer_sold_client
     EventMailer.offer_sold_client(Offer.first)
   end

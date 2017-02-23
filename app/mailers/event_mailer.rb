@@ -1,3 +1,4 @@
+# This mailer is responsible for sending mail in response to events.
 class EventMailer < ApplicationMailer
   def listing_created_agent(listing, agent)
     @listing = listing
@@ -9,7 +10,7 @@ class EventMailer < ApplicationMailer
   def listing_created_client(listing)
     @listing = listing
     @client = @listing.client
-    mail(to: @client.email, subject: "Thank you for listing with Front Door")
+    mail(to: @client.email, subject: 'Thank you for listing with Front Door')
   end
 
   def listing_claimed_agent(listing)
@@ -19,7 +20,7 @@ class EventMailer < ApplicationMailer
     mail(to: @agent.email,
          subject: "You agreed to represent #{@client.name}")
   end
-  
+
   def listing_claimed_client(listing)
     @listing = listing
     @agent = @listing.agent
@@ -35,7 +36,7 @@ class EventMailer < ApplicationMailer
     mail(to: @agent.email,
          subject: "You added #{@client.name}'s property to your MLS")
   end
-  
+
   def listing_listed_client(listing)
     @listing = listing
     @agent = @listing.agent
@@ -68,9 +69,9 @@ class EventMailer < ApplicationMailer
     @agent = @listing.agent
     @client = @listing.client
     mail(to: @agent.email,
-         subject: "Thank you for selling with Front Door")
+         subject: 'Thank you for selling with Front Door')
   end
-  
+
   def offer_sold_client(offer)
     @offer = offer
     @listing = @offer.listing

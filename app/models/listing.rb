@@ -22,7 +22,10 @@ class Listing < ApplicationRecord
             presence: true, if: -> { mls_number || mls_association }
 
   before_update :set_mls_at,
-                if: -> { mls_number && mls_association && (mls_number_changed? || mls_association_changed?)}
+                if: lambda {
+                  mls_number && mls_association &&
+                    (mls_number_changed? || mls_association_changed?)
+                }
 
   # Emails
   after_create :send_email_created
@@ -47,10 +50,10 @@ class Listing < ApplicationRecord
     when :offered then 'received offers'
     when :listed then 'listed'
     when :claimed then 'claimed'
-    when :created then 'unclaimed'
+    else 'unclaimed'
     end
   end
-  
+
   private
 
   def set_mls_at

@@ -1,4 +1,5 @@
-class OffersController < ApplicationController  
+# This class handles access to the Offer model.
+class OffersController < ApplicationController
   def index
     @listing = Listing.find(params[:listing_id])
     @offers = @listing.offers.order(:created_at).reverse

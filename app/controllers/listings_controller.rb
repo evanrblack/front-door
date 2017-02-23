@@ -6,8 +6,11 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     location = URI.escape(@listing.address)
     api_key = 'AIzaSyABnH3LBP2_H7WBbflOYL2Lc45n4PFzdW0'
-    @street_view_url = "https://maps.googleapis.com/maps/api/streetview?size=640x480&location=#{location}&key=#{api_key}"
-    @map_view_url = "https://maps.googleapis.com/maps/api/staticmap?center=#{location}&zoom=16&size=300x300&key=#{api_key}"
+    api_url = 'https://maps.googleapis.com/maps/api/'
+    @street_view_url = "#{api_url}/streetview?size=640x480" \
+                       "&location=#{location}&key=#{api_key}"
+    @map_view_url = "#{api_url}/staticmap?center=#{location}&zoom=16" \
+                    "&size=300x300&key=#{api_key}"
   end
 
   def new

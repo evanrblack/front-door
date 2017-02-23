@@ -1,3 +1,4 @@
+# This class is used by CanCanCan to manage permissions.
 class Ability
   include CanCan::Ability
 

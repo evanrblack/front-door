@@ -1,3 +1,4 @@
+# This model represents an offer on a property.
 class Offer < ApplicationRecord
   belongs_to :listing
 
@@ -9,7 +10,7 @@ class Offer < ApplicationRecord
                if: -> { status == 'contracted' && status_changed? }
   after_update :send_email_sold,
                if: -> { status == 'sold' && status_changed? }
-  
+
   validates :listing, :price, :direction, :status, :buyer_name, presence: true
   validates :direction, inclusion: { in: directions.keys }
   validates :status, inclusion: { in: statuses.keys }
@@ -22,7 +23,7 @@ class Offer < ApplicationRecord
   def dir
     direction.sub('dir_', '')
   end
-  
+
   private
 
   def send_email_offered
