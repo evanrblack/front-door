@@ -1,3 +1,8 @@
 This email is confirmation that you have agreed to be <%= @client.name %>'s agent for their property on [<%= @listing.street_address %>](<%= listing_url(@listing) %>).
 
 <%= @client.name %> has received a notification of this.
+
+<%= @client.name %>'s contact info is below:
+
+* Email address: [<%= @client.email %>](mailto:<%= @client.email %>)
+* Phone number: [<%= @client.phone_number_formatted %>](tel:<%= @client.phone_number %>)

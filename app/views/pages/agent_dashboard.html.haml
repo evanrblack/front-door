@@ -22,7 +22,7 @@
                   %tr
                     %td= link_to listing.street_address, listing
                     %td= listing.client.name
-                    %td 1. blah
+                    %td= listing.status_formatted.humanize
     .col-md-6
       .panel.panel-primary
         .panel-heading

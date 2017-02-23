@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :listings do
     post :claim, to: 'listings#claim'
+    resources :offers, shallow: true
   end
   
   # get 'sign-up', 'clients#new'

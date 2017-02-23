@@ -1,0 +1,12 @@
+- page_title 'Offers'
+#content.container
+  %h1.text-center Offers
+  - if can? :create, @listing.offers.new
+    .text-center
+      = link_to 'Add offer', new_listing_offer_path(@listing), class: 'btn btn-primary'
+    %br
+  .row
+    .col-md-6.col-md-offset-3
+      - @offers.each do |offer|
+        = render partial: offer
+

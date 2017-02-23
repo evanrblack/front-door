@@ -1,0 +1,16 @@
+- direction = offer.direction.sub('dir_', '')
+.panel{ class: "panel-#{direction == 'from' ? 'primary' : 'default'}" }
+  .panel-heading
+    %span.panel-title Offer #{direction} #{offer.buyer_name}
+  .panel-body
+    %ul
+      - %w(status buyer_name price closing_date notes).each do |p|
+        %li #{p.humanize}: #{offer.send(p)}
+  - if can? :update, offer
+    .panel-footer
+      - if offer.status == 'offered'
+        = link_to 'Mark as "under contract"', offer_path(offer, offer: { status: 'contracted' }), method: :patch, confirm: true
+      - elsif offer.status == 'contracted'
+        = link_to 'Mark as "sold"', offer_path(offer, offer: { status: 'sold' }), method: :patch, confirm: true
+      - else
+        Sold!

@@ -12,6 +12,7 @@
     %small #{@listing.city}, #{@listing.state} #{@listing.zip_code}
   .details.asking-price
     %strong= number_to_currency(@listing.asking_price, precision: 0)
+
 #content.container
   .row
     .col-md-4
@@ -24,20 +25,17 @@
               %li.list-group-item
                 = p.humanize
                 %span.badge.badge-primary= @listing.send(p)
-    .col-md-4
       .panel.panel-primary
         .panel-heading
           %span.panel-title Description
         .panel-body
           = @listing.description.present? ? @listing.description : 'None given'
+      
     .col-md-4
       .panel.panel-primary
         .panel-heading
           %span.panel-title Features
         .panel-body
-          %ul
-            %li= 'None'
-  .row
     .col-md-4
       .panel.panel-primary
         .panel-heading
@@ -45,3 +43,13 @@
         .panel-body
           .text-center
             = image_tag @map_view_url, class: 'img-responsive'
+      .panel.panel-primary
+        .panel-heading
+          %span.panel-title Controls
+        .panel-body
+          %ul
+            - if can? :update, @listing
+              %li= link_to 'Update listing', edit_listing_path(@listing)
+            - if can? :read, @listing.offers.new
+              %li= link_to 'View offers', listing_offers_path(@listing)
+

@@ -1,0 +1,5 @@
+Hi <%= @client.first_name %>,
+
+Your agent, [<%= @agent.name %>](<%= agent_url(@agent) %>), added an offer <%= @offer.dir %> <%= @offer.buyer_name %>.
+
+Information about the offer can be viewed on [the offers page](<%= listing_offers_url(@listing) %>).

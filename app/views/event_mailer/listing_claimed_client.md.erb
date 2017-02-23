@@ -2,8 +2,7 @@ Hi <%= @client.first_name %>,
 
 [<%= @agent.name %>](<%= agent_url(@agent) %>) has agreed to be your agent for [<%= @listing.street_address %>](<%= listing_url(@listing) %>).
 
-<%= @agent.first_name %>'s contact details are below:
+<%= @agent.name %>'s contact details are below:
 
-* Name: [<%= @agent.name %>](<%= agent_url(@agent) %>)
 * Email address: [<%= @agent.email %>](mailto:<%= @agent.name %>)
 * Phone number: [<%= @agent.phone_number_formatted %>](tel:<%= @agent.phone_number %>)

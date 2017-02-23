@@ -97,6 +97,17 @@ section.testimonial {
   }
 }
 
+// For listing pages
+.flow-me {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: space-between;
+
+  .panel {
+    min-width: 30%;
+  }
+}
+
 // For flashes
 .alert {
   font-weight: bold;
