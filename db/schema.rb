@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20170222224553) do
     t.integer  "direction",    default: 0, null: false
     t.integer  "status",       default: 0, null: false
     t.string   "buyer_name",               null: false
-    t.string   "price",                    null: false
+    t.integer  "price",                    null: false
     t.date     "closing_date"
     t.text     "notes"
     t.datetime "created_at",               null: false

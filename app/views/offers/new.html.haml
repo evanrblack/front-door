@@ -1,0 +1,16 @@
+- page_title 'Add Offer' 
+#content.container
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-primary
+        .panel-heading
+          %h1.panel-title Add Offer
+        .panel-body
+          = simple_form_for [@listing, @offer] do |f|
+            = f.input :direction,
+                      collection: { 'From a third party' => 'dir_from',
+                                    'To a third party' => 'dir_to' }
+            = f.input :buyer_name
+            = f.input :price
+            = f.input :notes
+            = f.button :submit, 'Add offer', class: 'btn-primary'

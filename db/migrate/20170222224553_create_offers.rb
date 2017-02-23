@@ -5,7 +5,7 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.integer :direction, null: false, default: 0
       t.integer :status, null: false, default: 0
       t.string :buyer_name, null: false
-      t.string :price, null: false
+      t.integer :price, null: false
       t.date :closing_date
       t.text :notes
 

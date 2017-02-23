@@ -42,4 +42,4 @@
                   %tr
                     %td= link_to listing.address, listing
                     %td= listing.client.name
-                    %td 1. blah
+                    %td= listing.status_formatted.humanize

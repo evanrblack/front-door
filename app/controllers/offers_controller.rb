@@ -6,7 +6,7 @@ class OffersController < ApplicationController
 
   def new
     @listing = Listing.find(params[:listing_id])
-    @offer = @listing.offers.new
+    @offer = Offer.new
   end
 
   def create
