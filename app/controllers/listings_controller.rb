@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     location = URI.escape(@listing.address)
-    api_key = 'AIzaSyABnH3LBP2_H7WBbflOYL2Lc45n4PFzdW0'
+    api_key = ENV['GOOGLE_API_KEY']
     api_url = 'https://maps.googleapis.com/maps/api'
     @street_view_url = "#{api_url}/streetview?size=640x480"\
                        "&location=#{location}&key=#{api_key}"
