@@ -1,3 +1,4 @@
 #content.container
   %h1.text-center Update Listing
-  = render partial: 'form', locals: { listing: @listing }
+  = simple_form_for @listing do |form|
+    = render partial: 'fields', locals: { form: form }
